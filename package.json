@@ -18,10 +18,10 @@
     "styleguide:build": "styleguidist build",
     "locale:extract": "lingui extract",
     "locale:compile": "lingui compile",
-    "locale:build": "npm run locale:extract && npm run locale:compile",
     "eslint": "eslint src/**/*.[t]s{,x}",
     "format": "prettier --write src/**/*.[jt]s{,x} && eslint --fix src/**/*.[jt]s{,x}",
-    "lint": "tsc --noEmit && npm run eslint"
+    "lint": "tsc --noEmit && npm run eslint",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@lingui/core": "^3.6.0",
@@ -130,7 +130,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run locale:build && git add -A ./src/locales"
+      "pre-push": "lingui extract && lingui compile && git add -A ./src/locales && git push --no-verify"
     }
   }
 }
