@@ -18,6 +18,7 @@
     "styleguide:build": "styleguidist build",
     "locale:extract": "lingui extract",
     "locale:compile": "lingui compile",
+    "locale:build": "npm run locale:extract && npm run locale:compile",
     "eslint": "eslint src/**/*.[t]s{,x}",
     "format": "prettier --write src/**/*.[jt]s{,x} && eslint --fix src/**/*.[jt]s{,x}",
     "lint": "tsc --noEmit && npm run eslint"
@@ -104,10 +105,11 @@
     "eslint-plugin-unicorn": "^28.0.2",
     "eslint-webpack-plugin": "^2.5.2",
     "foreman": "^3.0.1",
-    "immer": " >=8.0.1",
+    "husky": "^5.1.2",
+    "immer": " ^8.0.1",
     "prettier-eslint": "^12.0.0",
     "prettier-eslint-cli": "^5.0.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^4.0.3",
     "react-styleguidist": "^11.1.5",
     "redux-devtools-extension": "^2.13.8",
     "terser-webpack-plugin": "^5.1.1",
@@ -125,5 +127,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run locale:build && git add -A ./src/locales"
+    }
   }
 }
