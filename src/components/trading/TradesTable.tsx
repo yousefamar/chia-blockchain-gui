@@ -14,7 +14,7 @@ const cols = [{
   field: 'side',
   title: <Trans>Side</Trans>,
 }, {
-  field: 'amount', 
+  field: 'amount',
   title: <Trans>Amount</Trans>,
 }, {
   field: 'name',
@@ -33,8 +33,8 @@ type Props = {
 export default function TradesTable(props: Props) {
   const { rows } = props;
 
-  const tableRows = useMemo(() => {
-    return rows.map((row) => {
+  const tableRows = useMemo(() =>
+    rows.map((row) => {
       const { amount, name } = row;
       const humanAmount = amount < 0
         ? -amount
@@ -53,11 +53,10 @@ export default function TradesTable(props: Props) {
           </Amount>
         ),
       };
-    });
-  }, [rows]);
+    }), [rows]);
 
   return (
-    <Table 
+    <Table
       cols={cols}
       rows={tableRows}
     />

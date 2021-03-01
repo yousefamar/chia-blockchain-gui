@@ -1,18 +1,14 @@
 const progressControl = () => ({ type: 'PROGRESS_CONTROL' });
 
-export const openProgress = () => {
-  return {
+export const openProgress = () => ({
     ...progressControl(),
     open: true,
-  };
-};
+  });
 
-export const closeProgress = () => {
-  return {
+export const closeProgress = () => ({
     ...progressControl(),
     open: false,
-  };
-};
+  });
 
 type ProgressState = {
   progress_indicator: boolean;

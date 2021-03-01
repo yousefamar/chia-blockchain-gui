@@ -15,8 +15,7 @@ import { genereate_mnemonics, add_new_key_action } from '../../modules/message';
 import LayoutHero from '../layout/LayoutHero';
 import type { RootState } from '../../modules/rootReducer';
 
-const MnemonicField = (props: any) => {
-  return (
+const MnemonicField = (props: any) =>
     <Grid item xs={2}>
       <TextField
         variant="outlined"
@@ -34,8 +33,6 @@ const MnemonicField = (props: any) => {
         autoFocus
       />
     </Grid>
-  );
-};
 
 export default function WalletAdd() {
   const dispatch = useDispatch();
