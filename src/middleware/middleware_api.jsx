@@ -111,33 +111,15 @@ let timeout_balance = null;
 let timeout_height = null;
 
 async function get_height(store) {
-  if (can_call === true) {
-    store.dispatch(get_height_info());
-    can_call = false;
-    timeout_height = setTimeout(() => {
-      can_call = true;
-    }, 2000);
-  }
+  store.dispatch(get_height_info());
 }
 
 async function get_wallet_transactions(store, id) {
-  if (can_call_get_wallet_transactions === true) {
-    store.dispatch(get_transactions(id));
-    can_call_get_wallet_transactions = false;
-    timeout_tx = setTimeout(() => {
-      can_call_get_wallet_transactions = true;
-    }, 10000);
-  }
+  store.dispatch(get_transactions(id));
 }
 
 async function get_wallet_balance(store, id) {
-  if (can_call_get_wallet_balance === true) {
-    store.dispatch(get_balance_for_wallet(id));
-    can_call_get_wallet_balance = false;
-    timeout_balance = setTimeout(() => {
-      can_call_get_wallet_balance = true;
-    }, 10000);
-  }
+  store.dispatch(get_balance_for_wallet(id));
 }
 
 export function refreshAllState() {
